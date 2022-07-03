@@ -30,7 +30,7 @@ grafo.list_arestas()
 
 # grafo.busca_aresta('4', '3')
 
-grafo.adjacentes('6')
+grafo.adjacentes('3')
 
 # print(grafo.grau_vertice('1'))
 

@@ -77,8 +77,13 @@ class Grafo():
     
     def rm_aresta(self, verticeini, verticefim):
         count=0
+        v_ini = self.busca_index_vertice(verticeini)
+        v_fim = self.busca_index_vertice(verticefim)
+
         for i in range(len(self.arestas)):
             if (self.arestas[i].vini.nome == verticeini and self.arestas[i].vfim.nome == verticefim):
+                self.vertices[v_ini].vizinhos.remove(self.vertices[v_fim])
+                self.vertices[v_fim].vizinhos.remove(self.vertices[v_ini])
                 self.arestas.pop(i)
                 count+=1
                 break
@@ -124,6 +129,11 @@ class Grafo():
         for i in range(len(self.vertices)):
             if (self.vertices[i].nome == vertice):
                 return self.vertices[i]
+    
+    def busca_index_vertice(self, vertice):
+        for i in range(len(self.vertices)):
+            if (self.vertices[i].nome == vertice):
+                return i
 
     def adjacentes(self, vertice):
         vertice_aux = self.busca_vertice(vertice)
@@ -136,6 +146,9 @@ class Grafo():
                     ('O vértice não possui vizinhos.')
         else:
             print('Vertice inexistente.')
+
+    # def adjacentes_index(self, vertice):
+
         
                     
                     
