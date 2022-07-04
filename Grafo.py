@@ -45,7 +45,6 @@ class Grafo():
             print(f'{self.arestas[aresta].vini.nome} {self.arestas[aresta].vfim.nome}')
 
     def rm_vertice(self, vertice):
-        vertice_del = 0
         indice = 0
         achou = False
         aresta_ini = []
@@ -99,10 +98,9 @@ class Grafo():
     
     def grau_vertice(self, vertice):
         count = 0
-        for j in range(len(self.vertices)):
-            for i in range(len(self.arestas)):
-                if (self.arestas[i].vini.nome == vertice and self.arestas[i].vfim.nome == self.vertices[j].nome):
-                    count+=1
+        index = self.busca_index_vertice(vertice)
+        for i in range(len(self.vertices[index].vizinhos)):
+            count+=1
         return count
 
     def grau_grafo(self):
@@ -146,11 +144,3 @@ class Grafo():
                     ('O vértice não possui vizinhos.')
         else:
             print('Vertice inexistente.')
-
-    # def adjacentes_index(self, vertice):
-
-        
-                    
-                    
-        
-
